@@ -43,6 +43,13 @@ function Passport({ batch }: { batch: Batch }) {
         </div>
       </header>
 
+      <section aria-labelledby="glance-heading" className="grid grid-cols-3 gap-3 text-center">
+        <h2 id="glance-heading" className="sr-only">At a glance</h2>
+        <GlanceTile label="Water treated" value={`${formatNumber(batch.litersTreated)} L`} />
+        <GlanceTile label="Water reused" value={`${reusePercent(batch)}%`} />
+        <GlanceTile label="Lab result" value={passes ? 'Within limit' : 'Above limit'} />
+      </section>
+
       {batch.status === 'withheld' ? (
         <section
           aria-labelledby="withheld-heading"
@@ -136,6 +143,15 @@ function Passport({ batch }: { batch: Batch }) {
         </a>
       </p>
     </article>
+  );
+}
+
+function GlanceTile({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-ink/15 bg-white/70 px-2 py-4">
+      <p className="text-sm text-muted">{label}</p>
+      <p className="mt-1 text-base font-bold text-indigo">{value}</p>
+    </div>
   );
 }
 

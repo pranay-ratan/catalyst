@@ -13,6 +13,7 @@ import {
   STATUS_LABEL,
   STATUS_ORDER,
   uniqueMills,
+  reusePercent,
   waterTotals,
 } from '../lib/status';
 import type { Batch, BatchStatus } from '../types';
@@ -191,7 +192,10 @@ function BatchTable({ rows, onPrintTag }: BatchListProps) {
               </td>
               <td className="py-3 pr-3">{batch.mill}</td>
               <td className="py-3 pr-3">{formatDate(batch.treatedOn)}</td>
-              <td className="py-3 pr-3 text-right">{formatNumber(batch.litersTreated)}</td>
+              <td className="py-3 pr-3 text-right">
+                {formatNumber(batch.litersTreated)} L
+                <ReuseBar batch={batch} />
+              </td>
               <td className="py-3 pr-3">
                 <LabSummary batch={batch} />
               </td>
@@ -240,6 +244,19 @@ function BatchCards({ rows, onPrintTag }: BatchListProps) {
       ))}
       {rows.length === 0 ? <li className="text-base text-muted">No batches match these filters.</li> : null}
     </ul>
+  );
+}
+
+/** Reuse shown as a bar and as text, so the value never depends on colour alone. */
+function ReuseBar({ batch }: { batch: Batch }) {
+  const percent = reusePercent(batch);
+  return (
+    <div className="mt-1 flex items-center gap-2 text-sm text-muted">
+      <div className="h-2 w-24 overflow-hidden rounded-full bg-ink/10" aria-hidden="true">
+        <div className="h-2 rounded-full bg-turquoise-text" style={{ width: `${percent}%` }} />
+      </div>
+      <span>{percent}% reused</span>
+    </div>
   );
 }
 

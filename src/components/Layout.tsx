@@ -16,7 +16,7 @@ export function Layout() {
         Skip to content
       </a>
       <DemoBanner />
-      <header className="border-b border-ink/10 bg-linen">
+      <header className="sticky top-0 z-30 border-b border-ink/10 bg-linen/95 backdrop-blur">
         <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-4" aria-label="Main">
           <Link to="/" className="font-heading text-xl text-indigo no-underline" aria-label="ClearThread home">
             ClearThread
