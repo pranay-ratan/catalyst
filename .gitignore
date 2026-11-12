@@ -1,6 +1,9 @@
 node_modules
+.next
 dist
+.env
 .env.local
 .vercel
 tsconfig.tsbuildinfo
 .claude/.cc-writes
+*.log

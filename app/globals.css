@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background: #f7f4ec;
+  color: #3f5357;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  color: #13282c;
+  letter-spacing: -0.03em;
+}
+
+:focus-visible {
+  outline: 2px solid #0e7b6d;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #cfe4df;
+  color: #13282c;
+}
+
+.seal-spin {
+  transform-origin: 110px 110px;
+  animation: seal-rotate 18s linear infinite;
+}
+
+@keyframes seal-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.5s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal-spin,
+  .rise {
+    animation: none !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body,
+  #content,
+  .app-scroll {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+    width: auto !important;
+    inset: auto !important;
+    background: white !important;
+  }
+
+  .hang-tag,
+  .report-sheet {
+    break-inside: avoid;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 10mm;
+}
