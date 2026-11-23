@@ -4,8 +4,8 @@ A concept product for an independent "clean-water" seal on clothing: brands get 
 
 **Live demo:** https://catalyst-nine-sandy.vercel.app · **Code:** this repo
 
-![ClearThread screenshot](docs/screenshot-passport.png)
-<!-- TODO: add docs/screenshot-passport.png (a garment passport page), and docs/screenshot-dashboard.png (company dashboard) -->
+![ClearThread home](docs/screenshot-home.png)
+![Company dashboard](docs/screenshot-dashboard.png)
 
 **Stack:** Next.js (App Router) · TypeScript · Tailwind CSS · Radix UI · TanStack Table · Recharts · Framer Motion · QR generation and scanning · Vercel
 
